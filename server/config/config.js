@@ -8,7 +8,7 @@ process.env.PORT = process.env.PORT || 3000;
  * Entrono
  */
 
-process.env.NODE_ENV = process.env.NODE_ENV || "prod";
+process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 
 /**
  * BASE DE DATOS
@@ -20,6 +20,6 @@ if (process.env.NODE_ENV === "dev") {
   urlDB = "mongodb://localhost:27017/cafe";
 } else {
   urlDB =
-    "mongodb+srv://admin:tnq7Mq2ttj7BRGAY@cluster0.hscdt.mongodb.net/cafe?retryWrites=true&w=majority";
+  process.env.MONGO_URI;
 }
 process.env.URLDB = urlDB;
