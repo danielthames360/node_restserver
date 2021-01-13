@@ -76,18 +76,14 @@ app.post("/google", async (req, res) => {
       err: { message: "El token no es valido" },
     });
   }
-  let googleUser = await verify(token).catch((err) => {
-    return res.status(403).json({
-      ok: false,
-      err,
-    });
-  });
-  
-  if (googleUser.statusCode === 403) {
+  let googleUser = {};
+  try {
+    googleUser = await verify(token);
+  } catch (err) {
     return res.status(403).json({
       ok: false,
       err: {
-        message: "Token inválido",
+        message: "Token invalido, intenta nuevamente por favor.",
       },
     });
   }
